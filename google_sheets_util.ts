@@ -28,6 +28,14 @@ export class GoogleSheets {
               addSheet: {
                 properties: { title },
               },
+              insertRange: {
+                range: {
+                  sheetId: 0,
+                  startRowIndex: 0,
+                  startColumnIndex: 0,
+                },
+                shiftDimension: "ROWS",
+              }
             },
           ],
         },
