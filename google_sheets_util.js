@@ -27,7 +27,7 @@ class GoogleSheets {
     
       let response = await gsapi.spreadsheets.values.get(options);
       console.log(response);
-      return response
+      return response;
     })
   }
 }
