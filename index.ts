@@ -1,7 +1,7 @@
-const { google } = require("googleapis");
-const keys = require("./gs-api-test-7f8f4db8dd1c.json");
+import { google } from "googleapis";
+import { client_email, private_key } from "./gs-api-test-7f8f4db8dd1c.json";
 
-const client = new google.auth.JWT(keys.client_email, null, keys.private_key, [
+const client = new google.auth.JWT(client_email, null, private_key, [
   "https://www.googleapis.com/auth/spreadsheets",
 ]);
 

@@ -1,20 +1,20 @@
-const { google } = require("googleapis");
-const keys = require("./gs-api-test-7f8f4db8dd1c.json");
+import { google } from "googleapis";
+import { client_email, private_key } from "./gs-api-test-7f8f4db8dd1c.json";
 
-class GoogleSheets {
+export class GoogleSheets {
   spreadsheetId = "1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ";
 
-  init() {
+  private init() {
     const client = new google.auth.JWT(
-      keys.client_email,
+      client_email,
       null,
-      keys.private_key,
+      private_key,
       ["https://www.googleapis.com/auth/spreadsheets"]
     );
     return client;
   }
 
-  async createSheet(title) {
+  async createSheet(title: string) {
     const client = this.init();
     client.authorize(async (error, result) => {
       if (error) {
@@ -38,7 +38,7 @@ class GoogleSheets {
     });
   }
 
-  async update(sheet, values) {
+  async update<T>(sheet: string, values: T[]) {
     const client = this.init();
     client.authorize(async (error, result) => {
       if (error) {
@@ -57,7 +57,7 @@ class GoogleSheets {
     });
   }
 
-  async getValues(sheet) {
+  async getValues(sheet: string) {
     const client = this.init();
     client.authorize(async (error, result) => {
       if (error) {
