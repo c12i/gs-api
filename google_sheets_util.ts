@@ -5,12 +5,9 @@ export class GoogleSheets {
   spreadsheetId = "1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ";
 
   private init() {
-    const client = new google.auth.JWT(
-      client_email,
-      null,
-      private_key,
-      ["https://www.googleapis.com/auth/spreadsheets"]
-    );
+    const client = new google.auth.JWT(client_email, null, private_key, [
+      "https://www.googleapis.com/auth/spreadsheets",
+    ]);
     return client;
   }
 
@@ -47,7 +44,7 @@ export class GoogleSheets {
       const gsapi = google.sheets({ version: "v4", auth: client });
       const updateOptions = {
         spreadsheetId: this.spreadsheetId,
-        range: `${sheet}!E2`,
+        range: `${sheet}!A1:Z`,
         valueInputOption: "USER_ENTERED",
         resource: { values },
       };
@@ -76,4 +73,27 @@ export class GoogleSheets {
 }
 
 const client = new GoogleSheets();
-client.createSheet("Coolio").then((res) => console.log(res));
+
+const run = async () => {
+  await client.createSheet("1231d1d1");
+}
+
+const update = async () => {
+  await client.update("1231d1d1", [
+    ["claim id", "1231d1d1"],
+    ["patient name", "Collins Muriuki"],
+    ["member number", "10234H-H"],
+    ["invoice id", "321"],
+    ["diagnosis", ["Malaria", "Angular Stomatitis"].toString()],
+    ["prescription", ["Panadol", "1px", "od"].toString()],
+    ["invoiceTotal", "1000"],
+    ["item1", "200"],
+    ["item2", "300"],
+    ["item3", "250"],
+    ["item4", "250"],
+  ]);
+}
+run();
+setTimeout(() => {
+  update();
+}, 3000);
