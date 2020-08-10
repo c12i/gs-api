@@ -16,8 +16,8 @@ class GoogleSheets {
 
   async createSheet(title) {
     const client = this.init();
-    client.authorize((error, result) => {
-      if(error) {
+    client.authorize(async (error, result) => {
+      if (error) {
         return console.error(error);
       }
       const gsapi = google.sheets({ version: "v4", auth: client });
@@ -31,17 +31,17 @@ class GoogleSheets {
             },
           ],
         },
-        spreadsheetId: this.spreadsheetId
+        spreadsheetId: this.spreadsheetId,
       });
       console.log(response);
       return response;
-    })
+    });
   }
 
   async update(sheet, values) {
     const client = this.init();
-    client.authorize((error, result) => {
-      if(error) {
+    client.authorize(async (error, result) => {
+      if (error) {
         return console.error(error);
       }
       const gsapi = google.sheets({ version: "v4", auth: client });
@@ -54,13 +54,13 @@ class GoogleSheets {
       let response = await gsapi.spreadsheets.values.update(updateOptions);
       console.log(response);
       return response;
-    })
+    });
   }
 
   async getValues(sheet) {
     const client = this.init();
-    client.authorize((error, result) => {
-      if(error) {
+    client.authorize(async (error, result) => {
+      if (error) {
         return console.error(error);
       }
       const gsapi = google.sheets({ version: "v4", auth: client });
@@ -71,6 +71,9 @@ class GoogleSheets {
       let response = await gsapi.spreadsheets.values.get(options);
       console.log(response);
       return response;
-    })
+    });
   }
 }
+
+const client = new GoogleSheets();
+client.createSheet("Cool").then((res) => console.log(res));
