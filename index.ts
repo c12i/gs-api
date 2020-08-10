@@ -1,14 +1,16 @@
 import { GoogleSheets } from "./src/sheets";
 
-const client = new GoogleSheets();
+const client = new GoogleSheets("1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ");
+
+const s = (Math.round(Math.random()*100)).toString();
 
 const run = async () => {
-  await client.createSheet("1231d1d1");
+  await client.createSheet(s);
 }
 
 const update = async () => {
-  await client.update("1231d1d1", [
-    ["claim id", "1231d1d1"],
+  await client.update(s, [
+    ["claim id", s],
     ["patient name", "Collins Muriuki"],
     ["member number", "10234H-H"],
     ["invoice id", "321"],

@@ -2,7 +2,7 @@ import { google } from "googleapis";
 import { client_email, private_key } from "../gs-api-test-7f8f4db8dd1c.json";
 
 export class GoogleSheets {
-  spreadsheetId = "1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ";
+  constructor(private spreadsheetId: string) {}
 
   private init() {
     const client = new google.auth.JWT(client_email, null, private_key, [
