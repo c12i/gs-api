@@ -28,14 +28,6 @@ export class GoogleSheets {
               addSheet: {
                 properties: { title },
               },
-              insertRange: {
-                range: {
-                  sheetId: 0,
-                  startRowIndex: 0,
-                  startColumnIndex: 0,
-                },
-                shiftDimension: "ROWS",
-              }
             },
           ],
         },
@@ -84,4 +76,4 @@ export class GoogleSheets {
 }
 
 const client = new GoogleSheets();
-client.createSheet("Cool").then((res) => console.log(res));
+client.createSheet("Coolio").then((res) => console.log(res));
