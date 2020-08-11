@@ -2,10 +2,10 @@ import { GoogleSheets } from "./src/sheets";
 
 const client = new GoogleSheets("1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ");
 
-const s = (Math.round(Math.random()*100)).toString();
+const rng = (Math.round(Math.random()*1000)).toString();
 
 const dummyData = [
-  ["claim id", s],
+  ["claim id", rng],
   ["patient name", "Collins Muriuki"],
   ["member number", "10234H-H"],
   ["invoice id", "321"],
@@ -18,4 +18,4 @@ const dummyData = [
   ["item4", "250"],
 ]
 
-client.postToGoogleSheets(s, dummyData);
+client.postToGoogleSheets(rng, dummyData);
