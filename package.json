@@ -8,8 +8,8 @@
     "dev": "ts-node-dev index.ts",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Collins Muriuki",
+  "license": "MIT",
   "dependencies": {
     "googleapis": "^39.2.0",
     "jest": "^26.3.0"
