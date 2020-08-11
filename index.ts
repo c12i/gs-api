@@ -4,10 +4,6 @@ const client = new GoogleSheets("1ILfI5V5ZU9lt3Wqcr_gdRqDVqL2nymtQZNj8toF5EqQ");
 
 const s = (Math.round(Math.random()*100)).toString();
 
-const run = async () => {
-  await client.createSheet(s);
-}
-
 const dummyData = [
   ["claim id", s],
   ["patient name", "Collins Muriuki"],
@@ -22,10 +18,4 @@ const dummyData = [
   ["item4", "250"],
 ]
 
-const update = async () => {
-  await client.update(s, dummyData);
-}
-run();
-setTimeout(() => {
-  update();
-}, 3000);
+client.postToGoogleSheets(s, dummyData);

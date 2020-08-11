@@ -63,11 +63,18 @@ export class GoogleSheets {
       const gsapi = google.sheets({ version: "v4", auth: client });
       const options = {
         spreadsheetId: this.spreadsheetId,
-        range: `${sheet}!A2:B5`,
+        range: `${sheet}!A1:Z`,
       };
       let response = await gsapi.spreadsheets.values.get(options);
       console.log(response);
       return response;
     });
+  }
+
+  postToGoogleSheets<T>(sheet: string, values: T[]) {
+    this.createSheet(sheet);
+    setTimeout(() => {
+      this.update(sheet, values);
+    }, 2000);
   }
 }
